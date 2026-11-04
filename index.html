@@ -1,0 +1,134 @@
+<title>Yhelia Heyzen Vergara Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* layout: one fixed screen, photo + details on the left, soft petal scene on the right */
+:root{--cream:#fff8f6;--petal:#f9c6d6;--rose:#ee8fae;--deep:#d4577f;--mauve:#8b4560;--lav:#e8dcf7;--ink:#4a2a38;--card:rgba(255,255,255,.82);--line:#fff;
+  --shadow:0 18px 50px rgba(212,87,127,.2);color-scheme:light}
+html,body{height:100%;margin:0;overflow:hidden}
+body{background:linear-gradient(160deg,#fff8f6 0%,#fdeef3 45%,#f3e9fb 100%);color:var(--ink);
+  font-family:'Quicksand',system-ui,sans-serif;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  box-sizing:border-box;position:relative}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.blob{position:fixed;filter:blur(60px);opacity:.55;pointer-events:none;animation:morph 16s ease-in-out infinite alternate}
+.b1{width:380px;height:380px;background:var(--petal);top:-110px;left:-110px}
+.b2{width:340px;height:340px;background:var(--lav);bottom:-100px;right:-80px;animation-delay:-6s}
+@keyframes morph{0%{border-radius:60% 40% 55% 45%/50% 60% 40% 50%;transform:translate(0,0)}100%{border-radius:40% 60% 45% 55%/60% 40% 60% 40%;transform:translate(30px,24px) scale(1.1)}}
+
+.stage{position:relative;height:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;max-width:1280px;margin:0 auto;padding-block:2.5vh}
+.left{display:grid;grid-template-columns:min-content minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;min-width:0;height:100%}
+
+.photo{position:relative;width:min(40vw,calc(90vh*.75),560px);aspect-ratio:3/4;flex:none;animation:enter 1s cubic-bezier(.22,1,.36,1) both}
+.arch{position:absolute;inset:0;border-radius:999px 999px 26px 26px;overflow:hidden;border:6px solid #fff;box-shadow:var(--shadow);background:#fff;animation:float 6s ease-in-out infinite}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block;transform:scale(1.05)}
+.outline{position:absolute;inset:0;border-radius:999px 999px 26px 26px;border:2.5px dashed var(--rose);transform:translate(14px,14px);animation:float 6s ease-in-out infinite;animation-delay:-.4s}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes enter{from{opacity:0;filter:blur(10px);transform:scale(.8) rotate(-4deg)}to{opacity:1;filter:none;transform:none}}
+.spark{position:absolute;color:var(--rose);font-size:1.4rem;animation:twinkle 2.6s ease-in-out infinite}
+.s1{left:-14px;top:16%}.s2{right:-18px;top:50%;animation-delay:.8s;color:var(--deep)}.s3{left:-8px;bottom:8%;animation-delay:1.5s;color:var(--deep)}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.25) rotate(25deg)}}
+
+.info{display:flex;flex-direction:column;gap:clamp(6px,1.5vh,14px);min-width:0}
+.hello{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,3vh,2rem);color:var(--deep);margin:0;animation:rise .9s .15s both}
+h1{font-family:'Playfair Display',serif;line-height:1.08;margin:0;font-size:clamp(1.9rem,6.4vh,3.6rem);text-wrap:balance;animation:rise .9s .3s both}
+h1 .first{font-style:italic;background:linear-gradient(100deg,var(--deep) 20%,#ffb3cb 40%,var(--deep) 60%,var(--mauve) 80%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.bio-label{font-size:clamp(.8rem,1.9vh,1rem);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--deep);margin:0;animation:rise .9s .45s both}
+.contact{display:flex;flex-direction:column;gap:clamp(8px,1.6vh,14px);animation:rise .9s .55s both}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:clamp(6px,1.3vh,12px) 14px;border-radius:22px;background:var(--card);border:1.5px solid var(--line);box-shadow:var(--shadow);min-width:0}
+.ico{width:clamp(36px,6vh,50px);aspect-ratio:1;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,var(--petal),var(--rose));color:#fff}
+.ico svg{width:22px;height:22px}
+.txt{min-width:0;flex:1 1 230px}
+.txt small{display:block;font-size:clamp(.72rem,1.7vh,.9rem);letter-spacing:.12em;text-transform:uppercase;color:var(--deep);font-weight:700}
+.txt b{display:block;font-size:clamp(1rem,2.5vh,1.35rem);white-space:nowrap;user-select:all;-webkit-user-select:all;font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:6px;flex:none}
+.mini{border:2px dashed var(--rose);background:transparent;color:var(--deep);padding:7px 16px;border-radius:999px;font:700 clamp(.85rem,1.9vh,1rem) 'Quicksand',sans-serif;cursor:pointer;text-decoration:none;transition:.25s}
+.mini:hover{background:var(--petal)}
+.mini:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+
+.right{position:relative;height:100%;display:grid;place-items:center;min-width:0}
+.word{font-family:'Dancing Script',cursive;font-size:clamp(3.4rem,13vh,8rem);line-height:1;color:var(--deep);text-align:center;animation:rise 1s .4s both}
+.word span{display:block;font-family:'Playfair Display',serif;font-style:italic;font-size:.28em;color:var(--mauve);margin-top:.3em;letter-spacing:.04em}
+.badge{position:absolute;width:clamp(90px,16vh,130px);aspect-ratio:1;right:6%;top:8%;background:#fff;border-radius:50%;padding:4px;box-shadow:var(--shadow);animation:spin 18s linear infinite}
+.badge text{font-size:15px;font-weight:700;fill:var(--deep);letter-spacing:1.5px;font-family:'Quicksand',sans-serif}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;filter:blur(10px);transform:translateY(24px)}to{opacity:1;filter:none;transform:none}}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--deep);color:#fff;padding:10px 22px;border-radius:999px;font-weight:700;transition:.4s;pointer-events:none;z-index:9}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+@media (max-width:860px){
+  .left{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:1.4vh;justify-items:center;align-content:stretch}
+  .photo{width:auto;height:100%;min-height:0;max-width:100%}
+  .info{width:100%;text-align:center;gap:.9vh}
+  .hello,.bio-label{display:none}
+  h1{font-size:clamp(1.5rem,4.2vh,2.2rem)}
+  .contact{gap:.8vh}
+  .row{text-align:left;padding:.8vh 10px;gap:4px 8px}
+  .ico{width:34px}.ico svg{width:60%;height:60%}
+  .txt{flex:1 1 200px}
+  .txt b{font-size:clamp(.95rem,2.2vh,1.1rem)}
+  .txt small{font-size:.7rem}
+  .mini{padding:4px 12px;font-size:.85rem}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}#petals{display:none}}
+</style>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+<div class="blob b1" aria-hidden="true"></div>
+<div class="blob b2" aria-hidden="true"></div>
+
+<main class="stage">
+  <section class="left">
+    <div class="photo">
+      <div class="outline"></div>
+      <div class="arch"><img src="images/yhelia.jpg" alt="Portrait of Yhelia Heyzen R. Vergara" /></div>
+      <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">♡</span>
+    </div>
+    <div class="info">
+      <p class="hello">Hello, welcome to my portfolio ♡</p>
+      <h1><span class="first">Yhelia Heyzen</span><br />R. Vergara</h1>
+      <p class="bio-label">Contact</p>
+      <div class="contact">
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <span class="txt"><small>Gmail</small><b>heyzenyhelia@gmail.com</b></span>
+          <span class="acts"><button class="mini" type="button" data-copy="heyzenyhelia@gmail.com">Copy</button><a class="mini" href="mailto:heyzenyhelia@gmail.com">Email</a></span>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <span class="txt"><small>Phone</small><b>09087909058</b></span>
+          <span class="acts"><button class="mini" type="button" data-copy="09087909058">Copy</button><a class="mini" href="tel:+639087909058">Call</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var toast=document.getElementById('toast');
+  function say(m){toast.textContent=m;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},2200)}
+  function fb(t){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}a.remove();return ok}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    var fail=function(){say(fb(t)?'Copied '+t:'Select the text to copy it')};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){say('Copied '+t)},fail)}else{fail()}
+  })});
+  if(reduce)return;
+  var cv=document.getElementById('petals'),ctx=cv.getContext('2d'),P=[],W,H,cols=['#f9c6d6','#f4a6bf','#ffd9e6','#e8dcf7','#fbb6cc'];
+  function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  function mk(i){return{x:Math.random()*W,y:i?Math.random()*H:-30,s:7+Math.random()*10,vy:.5+Math.random()*.9,sw:.6+Math.random()*1.1,ph:Math.random()*6.28,r:Math.random()*6.28,vr:(Math.random()-.5)*.03,c:cols[Math.random()*cols.length|0],a:.55+Math.random()*.4}}
+  rs();for(var i=0;i<(innerWidth<700?12:24);i++)P.push(mk(true));addEventListener('resize',rs);
+  function loop(t){ctx.clearRect(0,0,W,H);P.forEach(function(p,i){p.y+=p.vy;p.x+=Math.sin(t/900+p.ph)*p.sw;p.r+=p.vr;
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.globalAlpha=p.a;ctx.fillStyle=p.c;ctx.beginPath();ctx.moveTo(0,-p.s);
+    ctx.bezierCurveTo(p.s,-p.s*.6,p.s*.7,p.s*.8,0,p.s);ctx.bezierCurveTo(-p.s*.7,p.s*.8,-p.s,-p.s*.6,0,-p.s);ctx.fill();ctx.restore();
+    if(p.y>H+30)P[i]=mk(false)});requestAnimationFrame(loop)}
+  requestAnimationFrame(loop);
+})();
+</script>
