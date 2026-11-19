@@ -328,6 +328,290 @@ body:has(#ach.active) #ach .pg{padding:9px 18px;font-size:.9rem;min-width:0}
   #ach .cert img{max-height:35vh}
 }
 
+
+/* Final responsive viewport rules */
+@media (min-width: 1001px) {
+  html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    flex: 0 0 auto;
+    min-height: 68px;
+    padding: clamp(8px, 1.5vh, 18px) 16px 0;
+    gap: clamp(6px, .8vw, 12px);
+  }
+
+  .tab, .theme-toggle {
+    padding: clamp(8px, 1.1vh, 12px) clamp(14px, 1.6vw, 26px);
+    font-size: clamp(.82rem, .95vw, 1.05rem);
+  }
+
+  main,
+  body:has(#ach.active) main {
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: clamp(10px, 2vh, 24px) clamp(18px, 2.5vw, 36px);
+    overflow: hidden;
+    align-items: center;
+  }
+
+  section,
+  section.active {
+    min-width: 0;
+    max-height: 100%;
+  }
+
+  /* Homepage */
+  #home .grid {
+    grid-template-columns: minmax(220px, .78fr) minmax(0, 1.22fr);
+    gap: clamp(24px, 4vw, 64px);
+    width: 100%;
+  }
+
+  #home .photo {
+    width: min(100%,  min(34vh, 390px));
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  #home .arch {
+    max-height: 56vh;
+  }
+
+  #home h1 {
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    margin-bottom: clamp(12px, 2vh, 26px);
+  }
+
+  #home .role {
+    font-size: clamp(1rem, 1.35vw, 1.4rem);
+  }
+
+  #home .label {
+    font-size: clamp(.85rem, 1vw, 1.1rem);
+    margin-bottom: 8px;
+  }
+
+  #home .row {
+    max-width: 100%;
+    padding: clamp(9px, 1.5vh, 17px) clamp(12px, 1.5vw, 22px);
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  #home .ico, #bio .ico {
+    width: clamp(38px, 4.5vh, 56px);
+    height: clamp(38px, 4.5vh, 56px);
+  }
+
+  #home .ico svg, #bio .ico svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #home .info small {
+    font-size: clamp(.7rem, .8vw, .9rem);
+  }
+
+  #home .info b {
+    font-size: clamp(.9rem, 1.15vw, 1.3rem);
+  }
+
+  #home .btn {
+    font-size: clamp(.75rem, .9vw, 1rem);
+    padding: 7px 12px;
+  }
+
+  /* Personal information */
+  #bio .about {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(16px, 2vw, 30px);
+  }
+
+  #bio .term pre {
+    min-height: 0;
+    padding: clamp(14px, 2vh, 24px);
+    font-size: clamp(.78rem, 1.05vw, 1.15rem);
+    line-height: 1.8;
+  }
+
+  #bio .pi-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(7px, .9vh, 12px);
+  }
+
+  #bio .pi-row {
+    min-width: 0;
+    padding: clamp(8px, 1.2vh, 15px);
+    gap: 10px;
+  }
+
+  #bio .pi-row b {
+    font-size: clamp(.82rem, 1vw, 1.15rem);
+  }
+
+  #bio .pi-row .info small {
+    font-size: clamp(.65rem, .75vw, .8rem);
+  }
+
+  #bio .pi-row.wide {
+    grid-column: 1 / -1;
+  }
+
+  /* Achievements: keep the timeline and certificates inside the viewport */
+  body:has(#ach.active) {
+    overflow: hidden;
+  }
+
+  body:has(#ach.active) main {
+    padding-top: clamp(8px, 1.2vh, 18px);
+    padding-bottom: clamp(8px, 1.2vh, 18px);
+  }
+
+  #ach .ach {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(12px, 1.5vw, 24px);
+    height: 100%;
+    align-items: stretch;
+  }
+
+  #ach .ach > .card {
+    min-width: 0;
+    padding: clamp(10px, 1.3vh, 20px) clamp(12px, 1.4vw, 22px);
+  }
+
+  #ach .label,
+  #ach .ach > .card > .label,
+  #ach .ach > div > .label {
+    font-size: clamp(.78rem, .9vw, 1rem);
+    margin-bottom: clamp(6px, .8vh, 12px);
+  }
+
+  #ach .edu {
+    height: calc(100% - 24px);
+    gap: clamp(3px, .5vh, 8px);
+  }
+
+  #ach .edu li.edu-row {
+    min-height: 0;
+    flex: 1 1 0;
+    padding: clamp(5px, .8vh, 12px) 8px clamp(5px, .8vh, 12px) 17px;
+    margin-bottom: 2px;
+  }
+
+  #ach .edu small {
+    font-size: clamp(.62rem, .72vw, .84rem);
+    margin-bottom: 3px;
+  }
+
+  #ach .edu b {
+    font-size: clamp(.82rem, 1vw, 1.15rem);
+  }
+
+  #ach .edu span {
+    font-size: clamp(.7rem, .78vw, .9rem);
+  }
+
+  #ach .edu-photo {
+    width: clamp(58px, 8vw, 112px);
+    height: clamp(42px, 9vh, 78px);
+  }
+
+  #ach .school-logo {
+    width: clamp(38px, 4.4vw, 62px);
+    height: clamp(38px, 7vh, 62px);
+  }
+
+  #ach .edu-media {
+    gap: clamp(4px, .6vw, 10px);
+  }
+
+  #ach .certs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(6px, .8vw, 12px);
+  }
+
+  #ach .cert {
+    padding: clamp(5px, .7vw, 10px);
+  }
+
+  #ach .cert img {
+    min-height: 0;
+    max-height: 21vh;
+    height: clamp(70px, 17vh, 150px);
+  }
+
+  #ach .cert b {
+    font-size: clamp(.72rem, .85vw, 1rem);
+    margin-top: 5px;
+  }
+
+  #ach .cert small {
+    font-size: clamp(.65rem, .72vw, .82rem);
+  }
+
+  /* Page navigation stays within the screen */
+  .pager,
+  body:has(#ach.active) #ach .pager {
+    position: absolute;
+    right: clamp(18px, 2.5vw, 36px);
+    bottom: 8px;
+    margin: 0;
+    gap: 8px;
+  }
+
+  .pg,
+  body:has(#ach.active) #ach .pg {
+    min-width: 0;
+    padding: clamp(7px, .9vh, 11px) clamp(12px, 1.5vw, 20px);
+    font-size: clamp(.75rem, .85vw, .95rem);
+  }
+
+  #home, #bio, #ach {
+    position: relative;
+    padding-bottom: 44px;
+  }
+}
+
+/* Short laptop screens: tighten spacing and typography further */
+@media (min-width: 1001px) and (max-height: 760px) {
+  nav { min-height: 56px; padding-top: 6px; }
+  main, body:has(#ach.active) main { padding-top: 6px; padding-bottom: 6px; }
+  #home .photo { width: min(29vh, 300px); }
+  #home h1 { font-size: clamp(1.9rem, 3.5vw, 3rem); margin-bottom: 10px; }
+  #home .row { padding-top: 7px; padding-bottom: 7px; }
+  #bio .term pre { font-size: .78rem; line-height: 1.55; padding: 12px; }
+  #bio .pi-row { padding: 6px 9px; }
+  #ach .edu li.edu-row { padding-top: 3px; padding-bottom: 3px; }
+  #ach .edu-photo { height: 54px; }
+  #ach .school-logo { width: 42px; height: 42px; }
+  #ach .cert img { height: 15vh; }
+}
+
+/* Tablets and phones retain natural vertical scrolling for readability */
+@media (max-width: 1000px) {
+  html, body { height: auto; min-height: 100%; overflow-x: hidden; overflow-y: auto; }
+  body { display: block; }
+  main { height: auto; min-height: calc(100dvh - 76px); overflow: visible; }
+}
+
 </style>
 </head>
 <body>
