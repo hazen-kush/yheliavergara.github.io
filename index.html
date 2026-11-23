@@ -612,6 +612,44 @@ body:has(#ach.active) #ach .pg{padding:9px 18px;font-size:.9rem;min-width:0}
   main { height: auto; min-height: calc(100dvh - 76px); overflow: visible; }
 }
 
+
+/* Final sizing override: make education diplomas and school logos larger */
+@media (min-width: 1001px) {
+  #ach .edu-photo {
+    width: clamp(96px, 10vw, 148px);
+    height: clamp(68px, 10vh, 100px);
+    flex: 0 0 auto;
+  }
+  #ach .school-logo {
+    width: clamp(58px, 5.2vw, 78px);
+    height: clamp(58px, 7.8vh, 78px);
+    flex: 0 0 auto;
+  }
+  #ach .edu-media {
+    gap: clamp(8px, .9vw, 14px);
+  }
+}
+@media (max-width: 1000px) {
+  #ach .edu-photo {
+    width: 136px;
+    height: 96px;
+  }
+  #ach .school-logo {
+    width: 76px;
+    height: 76px;
+  }
+}
+@media (max-width: 560px) {
+  #ach .edu-photo {
+    width: 124px;
+    height: 88px;
+  }
+  #ach .school-logo {
+    width: 68px;
+    height: 68px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -685,36 +723,36 @@ body:has(#ach.active) #ach .pg{padding:9px 18px;font-size:.9rem;min-width:0}
         <p class="label">// educational background</p>
         <ul class="edu">
           <li class="edu-row">
-            <div class="edu-details"><small>ELEMENTARY · KINDERGARTEN–GRADE 6</small><b>Dontogan Elementary School</b></div>
+            <div class="edu-details"><small>GRADUATED ELEMENTARY · KINDERGARTEN–GRADE 6</small><b>Dontogan Elementary School</b></div>
             <div class="edu-media">
-              <button class="edu-photo cert-open" type="button" aria-label="View elementary diploma"><img src="assets/education/elementary-diploma.jpg" alt="Elementary diploma"></button>
-              <img class="school-logo" src="assets/education/dontogan-elementary-logo.png" alt="Dontogan Elementary School logo">
+              <button class="edu-photo cert-open" type="button" aria-label="View elementary diploma"><img src="assets/dontogan.jpg" alt="Elementary diploma"></button>
+              <img class="school-logo" src="assets/donlogo.jpg" alt="DES logo">
             </div>
           </li>
           <li class="edu-row">
             <div class="edu-details"><small>JUNIOR HIGH · GRADE 7–8</small><b>Pines City National High School</b></div>
             <div class="edu-media">
-              <img class="school-logo" src="assets/education/pines-city-logo.png" alt="Pines City National High School logo">
+              <img class="school-logo" src="assets/pines.jpg" alt="Pines City National High School logo">
             </div>
           </li>
           <li class="edu-row">
-            <div class="edu-details"><small>JUNIOR HIGH · GRADE 9–10</small><b>Baguio City High School</b></div>
+            <div class="edu-details"><small>GRADUATED JUNIOR HIGH · GRADE 9–10</small><b>Baguio City High School</b></div>
             <div class="edu-media">
-              <button class="edu-photo cert-open" type="button" aria-label="View junior high diploma, Grades 9–10"><img src="assets/education/baguio-city-high-diploma.jpg" alt="Baguio City High School diploma"></button>
-              <img class="school-logo" src="assets/education/baguio-city-high-logo.png" alt="Baguio City High School logo">
+              <button class="edu-photo cert-open" type="button" aria-label="View junior high diploma, Grades 9–10"><img src="assets/jhs.jpg" alt="Baguio City High School diploma"></button>
+              <img class="school-logo" src="assets/logo.jpg" alt="Baguio City High School logo">
             </div>
           </li>
           <li class="edu-row">
-            <div class="edu-details"><small>SENIOR HIGH · GRADE 11–12</small><b>Baguio City High School</b><span>Strand: Arts and Design</span></div>
+            <div class="edu-details"><small>GRADUATED SENIOR HIGH </small><b>Baguio City High School</b><span>Strand: Arts and Design · GRADE 11–12</span></div>
             <div class="edu-media">
-              <button class="edu-photo cert-open" type="button" aria-label="View senior high diploma"><img src="assets/education/senior-high-diploma.jpg" alt="Senior high school diploma"></button>
-              <img class="school-logo" src="assets/education/baguio-city-high-logo.png" alt="Baguio City High School logo">
+              <button class="edu-photo cert-open" type="button" aria-label="View senior high diploma"><img src="assets/shs.jpg" alt="SHS diploma"></button>
+              <img class="school-logo" src="assets/logo.jpg" alt="Baguio City High School logo">
             </div>
           </li>
           <li class="edu-row">
-            <div class="edu-details"><small>COLLEGE · 1ST YEAR</small><b>University of the Cordilleras</b><span>Bachelor of Science in Information Technology</span></div>
+            <div class="edu-details"><small>COLLEGE · STILL STUDYING</small><b>University of the Cordilleras</b><span>Bachelor of Science in Information Technology</span></div
             <div class="edu-media">
-              <img class="school-logo" src="assets/education/uc-logo.png" alt="University of the Cordilleras logo">
+              <img class="school-logo" src="assets/uclogo.jpg" alt="University of the Cordilleras logo">
             </div>
           </li>
         </ul>
@@ -733,8 +771,6 @@ body:has(#ach.active) #ach .pg{padding:9px 18px;font-size:.9rem;min-width:0}
     <div class="pager" data-for="ach"><button class="pg" data-go="home">Return to HOMEPAGE</button></div>
   </section>
 </main>
-
-
 
 <div class="cert-lightbox" id="certLightbox" aria-hidden="true">
   <button class="lightbox-backdrop" id="lightboxBackdrop" type="button" aria-label="Back to achievements"></button>
