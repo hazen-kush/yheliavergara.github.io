@@ -643,18 +643,22 @@ body:has(#ach.active) #ach .pg{padding:9px 18px;font-size:.9rem;min-width:0}
   }
 }
 
-/* Family and friends: 2x2 photo grid that fills the screen, no scrolling */
+/* Family and friends: square photo tiles, with the full photo visible */
 html:has(#fam.active),body:has(#fam.active){height:100dvh;min-height:0;overflow:hidden}
 body:has(#fam.active) main{min-height:0;height:auto;overflow:hidden;align-items:stretch;padding:clamp(6px,1.2vh,16px) clamp(8px,1.2vw,20px)}
 #fam.active{display:flex;flex-direction:column;height:100%;max-height:100%;min-height:0}
-#fam .ff{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(6px,.9vw,14px);width:100%}
-#fam .tile{position:relative;min-width:0;min-height:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);background:#e9ebf0}
-#fam .tile .cert-open{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
-#fam .tile img{width:100%;height:100%;object-fit:cover;display:block}
+#fam .ff{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:minmax(0,1fr);align-items:center;justify-items:center;gap:clamp(6px,.9vw,14px);width:100%}
+#fam .tile{position:relative;width:min(100%,calc((100dvh - 170px) * .72));aspect-ratio:1/1;min-width:0;min-height:0;overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);background:#e9ebf0}
+#fam .tile .cert-open{position:absolute;inset:0;width:100%;height:100%;border-radius:0;background:#e9ebf0}
+#fam .tile img{width:100%;height:100%;object-fit:contain;display:block}
 #fam .cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,4vh,40px) clamp(12px,1.4vw,22px) clamp(8px,1.4vh,16px);background:linear-gradient(to top,rgba(8,10,15,.82),rgba(8,10,15,0));color:#fff;pointer-events:none}
 #fam .cap small{display:block;font:500 clamp(.65rem,.8vw,.85rem) var(--mono);color:var(--gold-light);margin-bottom:2px}
 #fam .cap b{display:block;font-size:clamp(.9rem,1.35vw,1.5rem);font-weight:700;line-height:1.2}
 #fam .pager{position:static;flex:none;justify-content:center;margin:clamp(6px,1.2vh,14px) 0 0}
+@media(max-width:900px){
+  #fam .ff{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));}
+  #fam .tile{width:min(100%,calc((100dvh - 210px) / 2));}
+}
 
 /* Larger, centered bottom navigation buttons on every page */
 .pg{font-size:clamp(1.05rem,1.35vw,1.5rem)!important;padding:clamp(12px,1.8vh,20px) clamp(26px,3vw,54px)!important;min-width:0}
@@ -790,6 +794,271 @@ nav#topNav .theme-toggle{width:44px!important;height:44px!important;min-width:44
 nav#topNav .theme-label{display:none!important}
 @media(max-width:700px){nav#topNav{height:60px!important}}
 @media(max-width:430px){nav#topNav{height:58px!important}nav#topNav .theme-toggle{width:34px!important;height:34px!important;min-width:34px!important}}
+
+
+/* Achievements refinement: clearer section labels and larger diploma/school images */
+#ach .ach { align-items: stretch; }
+#ach .ach > .card,
+#ach .ach > div { min-width: 0; }
+#ach .ach > .card > .label,
+#ach .ach > div > .label {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1;
+  color: var(--gold-light, var(--gold));
+  font-size: clamp(.9rem, 1vw, 1.12rem);
+  font-weight: 800;
+  letter-spacing: .06em;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  padding: 0 0 7px;
+  border-bottom: 1px solid var(--line);
+}
+#ach .edu-photo {
+  width: clamp(138px, 11vw, 166px);
+  height: clamp(96px, 11vh, 118px);
+  flex: 0 0 auto;
+}
+#ach .edu-photo img {
+  width: 100%; height: 100%;
+  object-fit: contain !important;
+  background: var(--paper);
+}
+#ach .school-logo {
+  width: clamp(78px, 6vw, 92px);
+  height: clamp(78px, 9vh, 92px);
+  flex: 0 0 auto;
+}
+#ach .edu-media { gap: clamp(8px, .9vw, 14px); }
+@media (min-width: 1001px) {
+  #ach .edu li.edu-row { min-height: 0; padding-top: clamp(6px, .85vh, 12px); padding-bottom: clamp(6px, .85vh, 12px); }
+  #ach .edu-photo { width: clamp(138px, 10.5vw, 158px); height: clamp(94px, 10vh, 112px); }
+  #ach .school-logo { width: clamp(76px, 5.5vw, 88px); height: clamp(76px, 8vh, 88px); }
+}
+@media (max-width: 1000px) {
+  #ach .edu-photo { width: min(42vw, 160px); height: 112px; }
+  #ach .school-logo { width: 82px; height: 82px; }
+}
+@media (max-width: 560px) {
+  #ach .ach > .card > .label, #ach .ach > div > .label { margin-bottom: 10px; }
+  #ach .edu-photo { width: min(40vw, 140px); height: 100px; }
+  #ach .school-logo { width: 72px; height: 72px; }
+}
+
+
+/* Achievements layout matched to the supplied reference */
+#ach .ach{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr) !important;
+  gap:clamp(14px,1.8vw,28px) !important;
+  align-items:stretch !important;
+  width:100%;
+  height:100%;
+  min-height:0;
+}
+#ach .ach > .card,
+#ach .ach > div{
+  min-width:0;
+  min-height:0;
+}
+#ach .ach > .card{
+  height:100%;
+  padding:clamp(12px,1.6vw,24px) !important;
+  display:flex;
+  flex-direction:column;
+}
+#ach .ach > div:not(.card){
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+#ach .ach > .card > .label,
+#ach .ach > div > .label{
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  flex:0 0 auto;
+  margin:0 0 clamp(8px,1.2vh,14px) !important;
+  padding:0 0 7px;
+  border-bottom:1px solid var(--line);
+  color:var(--gold-deep);
+  font:800 clamp(.9rem,1vw,1.08rem)/1.35 var(--mono);
+  letter-spacing:.04em;
+}
+#ach .edu{
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:clamp(5px,.8vh,10px);
+  height:auto !important;
+  min-height:0;
+  margin:0;
+}
+#ach .edu li.edu-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(8px,1vw,14px);
+  flex:1 1 0;
+  min-height:0 !important;
+  margin:0 0 0 6px !important;
+  padding:clamp(7px,1.1vh,14px) clamp(8px,.9vw,13px) !important;
+}
+#ach .edu-details{min-width:0}
+#ach .edu small{
+  display:block;
+  font-size:clamp(.68rem,.85vw,.92rem);
+  line-height:1.25;
+  margin-bottom:5px;
+}
+#ach .edu b{
+  font-size:clamp(.88rem,1.12vw,1.25rem);
+  line-height:1.2;
+}
+#ach .edu span{
+  display:block;
+  font-size:clamp(.72rem,.85vw,.94rem);
+  line-height:1.25;
+  margin-top:4px;
+}
+#ach .edu-media{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(7px,.8vw,12px);
+  flex:0 0 auto;
+}
+#ach .edu-photo{
+  width:clamp(120px,10.2vw,158px) !important;
+  height:clamp(86px,10.5vh,112px) !important;
+  flex:0 0 auto;
+}
+#ach .edu-photo img{
+  width:100%;
+  height:100%;
+  object-fit:contain !important;
+  background:var(--paper);
+}
+#ach .school-logo{
+  width:clamp(68px,5.8vw,88px) !important;
+  height:clamp(68px,8.5vh,88px) !important;
+  flex:0 0 auto;
+  object-fit:contain !important;
+}
+#ach .certs{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  gap:clamp(8px,1.1vw,14px);
+  flex:1 1 auto;
+  min-height:0;
+}
+#ach .cert.card{
+  min-width:0;
+  min-height:0;
+  padding:clamp(7px,.8vw,12px) !important;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  overflow:hidden;
+}
+#ach .cert .cert-open{
+  display:block;
+  width:100%;
+  height:clamp(78px,16vh,138px);
+  flex:0 0 auto;
+  overflow:hidden;
+  border-radius:10px;
+}
+#ach .cert .cert-open img,
+#ach .cert > img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:contain !important;
+  border-radius:10px;
+  background:#f1f1f1;
+}
+#ach .cert b{
+  display:block;
+  margin-top:clamp(5px,.7vh,8px);
+  font-size:clamp(.78rem,.95vw,1rem);
+  line-height:1.2;
+}
+#ach .cert small{
+  font-size:clamp(.68rem,.8vw,.86rem);
+  line-height:1.2;
+  margin-top:3px;
+}
+@media(max-width:900px){
+  #ach .ach{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+  #ach .edu-photo{width:clamp(88px,15vw,130px) !important;height:84px !important}
+  #ach .school-logo{width:58px !important;height:58px !important}
+  #ach .cert .cert-open{height:clamp(64px,13vh,100px)}
+}
+@media(max-width:620px){
+  #ach .ach{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto auto;
+    height:auto;
+  }
+  #ach .ach > .card{height:auto}
+  #ach .edu{gap:8px}
+  #ach .edu li.edu-row{min-height:94px !important}
+  #ach .certs{grid-template-rows:none;grid-auto-rows:minmax(0,1fr)}
+}
+
+
+/* Final heading visibility fix: reserve clear space above both Achievements columns */
+body:has(#ach.active) main{
+  padding-top:clamp(88px,10vh,112px) !important;
+  padding-bottom:clamp(58px,7vh,76px) !important;
+}
+body:has(#ach.active) #ach.active{
+  justify-content:flex-start !important;
+  padding-top:clamp(8px,1vh,14px) !important;
+}
+body:has(#ach.active) #ach .ach{
+  height:100% !important;
+  min-height:0 !important;
+  align-items:stretch !important;
+}
+body:has(#ach.active) #ach .ach > .card,
+body:has(#ach.active) #ach .ach > div:nth-child(2){
+  box-sizing:border-box !important;
+  min-height:0 !important;
+  padding-top:clamp(20px,2.5vh,30px) !important;
+}
+body:has(#ach.active) #ach .ach > .card > .label,
+body:has(#ach.active) #ach .ach > div:nth-child(2) > .label{
+  display:block !important;
+  position:relative !important;
+  inset:auto !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:1.5em !important;
+  flex:0 0 auto !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  overflow:visible !important;
+  margin:0 0 clamp(10px,1.4vh,16px) !important;
+  padding:0 0 8px !important;
+  border-bottom:1px solid var(--line) !important;
+  color:var(--gold-deep) !important;
+  font:800 clamp(.82rem,1vw,1.05rem)/1.4 var(--mono) !important;
+  letter-spacing:.035em !important;
+  z-index:2 !important;
+}
+
 </style>
 </head>
 <body>
